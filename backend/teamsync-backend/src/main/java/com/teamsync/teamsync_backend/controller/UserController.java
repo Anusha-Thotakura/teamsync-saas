@@ -1,5 +1,6 @@
 package com.teamsync.teamsync_backend.controller;
 
+import com.teamsync.teamsync_backend.dto.LoginRequest;
 import com.teamsync.teamsync_backend.entity.User;
 import com.teamsync.teamsync_backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,10 @@ public class UserController {
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
         return userService.registerUser(user);
+    }
+
+    @PostMapping("/login")
+    public User loginUser(@RequestBody LoginRequest request) {
+        return userService.loginUser(request.getEmail(), request.getPassword());
     }
 }
